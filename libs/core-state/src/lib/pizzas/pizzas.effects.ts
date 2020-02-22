@@ -1,3 +1,4 @@
+import { PizzasFacade } from './pizzas.facade';
 import { Injectable } from '@angular/core';
 
 import { Actions, createEffect } from '@ngrx/effects';
@@ -69,7 +70,8 @@ export class PizzasEffects {
       ) => {
         return this.pizzasService.delete(action.pizza).pipe(
           map((pizza: Pizza) => pizzasActions.pizzaDeleted({ pizza })),
-          tap(() => this.notify.notify('Successfully Deleted a Pizza'))
+          tap(() => this.notify.notify('Successfully Deleted a Pizza')),
+          tap(() => this.pizzasFacade.loadPizzas())
         );
       },
       onError: (action: ReturnType<typeof pizzasActions.deletePizza>, error) => {
@@ -82,6 +84,7 @@ export class PizzasEffects {
     private actions$: Actions,
     private dataPersistence: DataPersistence<PizzasPartialState>,
     private pizzasService: PizzasService,
-    private notify: NotifyService
+    private notify: NotifyService,
+    private pizzasFacade: PizzasFacade
   ) {}
 }
