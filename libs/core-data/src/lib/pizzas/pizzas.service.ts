@@ -2,6 +2,9 @@ import { Pizza } from './pizzas';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
+import { of } from 'rxjs';
+import * as uuid from 'uuid/v1';
+
 const BASE_URL = 'https://level-up-api-snfwxrkzok.now.sh'
 
 @Injectable({
@@ -25,7 +28,7 @@ model = 'pizzas'
   }
 
   create(pizza: Pizza) {
-    return this.httpClient.post(this.getUrl(), pizza);
+    return of({ id: uuid(), ...pizza })
   }
 
   delete(pizza: Pizza) {
