@@ -1,0 +1,16 @@
+<div class="container d-flex mt-3">
+  <div class="col-6">
+    <mdv-twenty-nine-pizzas-list [pizzas]="pizzas$ | async"
+                          (selected)="selectPizza($event)"
+                          (deleted)="deletePizza($event)">
+    </mdv-twenty-nine-pizzas-list>
+  </div>
+
+  <div class="col-6">
+    <mdv-twenty-nine-pizzas-details [pizza]="selectedPizza$ | async"
+                              [form]="form"
+                              (saved)="savePizza($event)"
+                              (cancelled)="cancel()">
+    </mdv-twenty-nine-pizzas-details>
+  </div>
+</div>

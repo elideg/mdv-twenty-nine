@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center mt-3">
+  <button mat-button [routerLink]="['/pizzas']">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-card class="col-6" *ngIf="pizzas$ | async as pizza">
+    <mat-card-header class="align-self-center">
+      <mat-card-title>
+        <h3 mat-line>Pizza Id</h3>
+        <p>{{pizza.id}}</p>
+        <h3 mat-line>Pizza Name</h3>
+        <p>{{pizza.name}}</p>
+        <h3 mat-line>Pizza Calories</h3>
+        <p>{{pizza.calories}}</p>
+        <h3 mat-line>Pizza Main Topping</h3>
+        <p>{{pizza.mainTopping}}</p>
+        <h3 mat-line>Pizza Secondary Topping</h3>
+        <p>{{pizza.secondaryTopping}}</p>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>
