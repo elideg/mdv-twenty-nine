@@ -67,7 +67,7 @@ export class PizzasEffects {
         action: ReturnType<typeof pizzasActions.deletePizza>,
         state: PizzasPartialState
       ) => {
-        return of(action.pizza).pipe(
+        return this.pizzaService.delete(action.pizza).pipe(
           map((pizza: Pizza) => pizzasActions.pizzaDeleted({ pizza })),
           tap(() => this.notify.notify('Successfully Deleted a Pizza'))
         );
